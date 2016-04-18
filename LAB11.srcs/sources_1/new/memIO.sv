@@ -67,7 +67,7 @@ module memIO #(
     assign mem_readdata = 
           (mem_code == 2'b10) ? { {(Dbits-char_bits){1'b0}}, screen_readdata1}
         : (mem_code == 2'b01) ? dmem_readdata
-        : (mem_code == 2'b11) ? {(Dbits){1'b0}} // return all 0 for 0 register
+        : (mem_code == 2'b00) ? {(Dbits){1'b0}} // return all 0 for 0 register
         : (mem_code == 2'b11) ? {(Dbits){1'bX}} // Not implemented yet!
         : {(Dbits){1'bX}}; // shouldn't happen
         
