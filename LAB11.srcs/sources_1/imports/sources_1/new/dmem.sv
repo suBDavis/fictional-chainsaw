@@ -6,7 +6,7 @@ module dmem #(
     parameter Abits = 32,
     parameter Nloc = 32,
     parameter Dbits = 32,
-    parameter initfile = "screentest_dmem.txt"
+    parameter initfile = "dmem.txt"
     )(
     input wire clock,
     input wire mem_wr,

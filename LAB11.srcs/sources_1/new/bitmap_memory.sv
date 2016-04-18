@@ -10,8 +10,8 @@
 
 module bitmapmem #(
    parameter Nloc = 4096,                      // Number of memory locations (16 characters * 16x16 patterns)
-   parameter Dbits = 12,                       // Number of bits in data
-   parameter initfile = "screentest_bmem.txt"  // Name of file with initial values
+   parameter Dbits = 12,                       // Number of bits in data 4 for r g b
+   parameter initfile = "bmem.txt"  // Name of file with initial values
    )(
    input wire [$clog2(Nloc)-1 : 0] ReadAddr1,
    output logic [Dbits-1 : 0] ReadData1

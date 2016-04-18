@@ -45,15 +45,26 @@ module full_top #(
     // Use the same clock frequency for the MIPS and data memory/memIO modules
     // The vgadisplaydriver should keep the 100 MHz clock.
     // For example:
-
-    // VGA Display Driver params
-    //    input wire clk,
-    //    input wire [char_bits-1:0] char_code,
-    //    output wire [screen_addr_bits-1:0] screen_addr,
-    //    output wire [3:0] red, green, blue,
-    //    output wire hsync, vsync
     
-    mips mips(clk12, reset, pc, instr, mem_wr, mem_addr, mem_writedata, mem_readdata);
+    //input wire clk, 
+    //input wire reset, 
+    //output wire [31:0] pc, 
+    //input wire [31:0] instr, 
+    //output wire mem_wr, 
+    //output wire [31:0] mem_addr,
+    //output wire [31:0] mem_writedata, 
+    //input wire [31:0] mem_readdata
+    
+    mips mips(
+        .clk(clk12), 
+        .reset(reset), 
+        .pc(pc[31:0]), 
+        .instr(instr), 
+        .mem_wr(mem_wr), 
+        .mem_addr(mem_addr), 
+        .mem_writedata(mem_writedata), 
+        .mem_readdata(mem_readdata)
+        );
     
     imem #(32, 32, 32, imem_init) 
         imem(pc[31:0], instr);

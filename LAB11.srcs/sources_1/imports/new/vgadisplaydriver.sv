@@ -13,7 +13,7 @@
 module vgadisplaydriver #(
     parameter char_bits=4,
     parameter sm_locations = 1200, 
-    parameter initfile="bitmap_init.txt"
+    parameter initfile="bmem.txt"
     )(
     input wire clk,
     input wire [char_bits-1:0] char_code,
@@ -35,7 +35,7 @@ module vgadisplaydriver #(
     //    bitmap_addr = charcode*255 + ymod16 * 16 + xmod 16
    
     //Figure out screen data address from 
-    assign screen_addr = ((y>>4)<<5) + ((y>>4)<<3) + x>>4;
+    assign screen_addr = y[9:4] + y[9:4] + x[9:4];
     
     //Figure out the bitmap location
     assign bmem_addr = {char_code, y[3:0], x[3:0]};
@@ -47,6 +47,6 @@ module vgadisplaydriver #(
     //    input wire [$clog2(Nloc)-1 : 0] ReadAddr1,
     //    output logic [Dbits-1 : 0] ReadData1
     //    );
-    bitmapmem #(4096, 12, initfile) bm (bmem_addr, bmem_color);
+    bitmapmem #(4096, char_bits+8, initfile) bm (bmem_addr, bmem_color);
  
 endmodule

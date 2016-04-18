@@ -11,7 +11,7 @@
 module screenmem #(
    parameter Nloc = 1200,                     // Number of memory locations
    parameter Dbits = 4,                       // Number of bits in data
-   parameter initfile = "screentest_smem.txt"  // Name of file with initial values
+   parameter initfile = "smem.txt"  // Name of file with initial values
    )(
    input wire clock,
    input wire wr,                             // WriteEnable:  if wr==1, data is written into mem

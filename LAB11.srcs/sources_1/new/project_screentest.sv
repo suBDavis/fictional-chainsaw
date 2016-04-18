@@ -73,7 +73,6 @@ module project_screentest;
 	wire [3:0]  charcode       =uut.charcode;              // character code returned by screen mem
 	wire dmem_wr               =uut.memIO.dmem_wr;
 	wire smem_wr               =uut.memIO.smem_wr;
-	wire [1:0] mem_code        =uut.memIO.mem_code;
 
 	// Signals related to module vgadisplaydriver (display driver)
     wire hsync                 =uut.hsync;
@@ -88,7 +87,7 @@ module project_screentest;
 	
 
 	// Instantiate the Unit Under Test (UUT)
-	full_top uut(
+	full_top #("screentest_nopause_imem.txt", "screentest_dmem.txt", "screentest_smem.txt", "screentest_bmem.txt", 4, 1200) uut(
 	       .clk(clk), 
 	       .reset(reset)
 	);
