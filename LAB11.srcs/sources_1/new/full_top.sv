@@ -9,7 +9,7 @@
 `default_nettype none
 
 module full_top #(
-    parameter imem_init="screentest_nopause_imem.txt",
+    parameter imem_init="screentest_imem.txt",
     parameter dmem_init="screentest_dmem.txt",
     parameter scrmem_init="screentest_smem.txt",		// text file to initialize screen memory
     parameter bitmap_init="screentest_bmem.txt",	    // text file to initialize bitmap memory
@@ -34,8 +34,8 @@ module full_top #(
     //    when synthesizing, use the first line
     //    when simulating, get rid of the clock divider, and use the second line
     //
-    //clockdivider_Nexys4 clkdv(clk, clk100, clk50, clk25, clk12);
-    assign clk100=clk; assign clk50=clk; assign clk25=clk; assign clk12=clk;
+    clockdivider_Nexys4 clkdv(clk, clk100, clk50, clk25, clk12);
+    //assign clk100=clk; assign clk50=clk; assign clk25=clk; assign clk12=clk;
 
     // For synthesis:  use an appropriate clock frequency(ies) below
     //   clk100 will work for only the most efficient designs (hardly anyone)
